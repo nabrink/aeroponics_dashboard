@@ -1,0 +1,24 @@
+{
+  "name": "aeroponics_dashboard",
+  "version": "0.0.1",
+  "description": "A dashboard for aeroponics sensors",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nabrink/aeroponics_dashboard.git"
+  },
+  "author": "Sebastian Nabrink",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nabrink/aeroponics_dashboard/issues"
+  },
+  "homepage": "https://github.com/nabrink/aeroponics_dashboard#readme",
+  "dependencies": {
+    "aws-sdk": "^2.3.7",
+    "express": "^4.13.4",
+    "socket.io": "^1.4.5"
+  }
+}
