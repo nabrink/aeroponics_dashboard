@@ -10,7 +10,7 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 
 exports.getSensorData = function (type, start, end, callback) {
   var params = {
-    TableName: 'sensor_data',
+    TableName: process.env.SENSOR_DATA_TABLE,
     ProjectionExpression: '#ts, #t, #v',
     FilterExpression: '#ts between :start and :end and #t = :type',
     ExpressionAttributeNames: {

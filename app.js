@@ -8,6 +8,8 @@ var path = require('path');
 var config = require('./config.js');
 var sensorSvc = require('./services/sensor_service');
 
+var startDate = '2016-01-01 00:00:00.00000';
+var endDate = '2016-12-31 23:59:59 99999';
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -17,10 +19,8 @@ app.get('/', function (request, response) {
   response.sendFile(path.join(__dirname, 'views/index.html'));
 });
 
-app.get('/temperature_data', function (request, response) {
-  sensorSvc.getSensorData('b',
-                          '2016-05-01 00:00:00.00000',
-                          '2016-05-01 23:59:59 99999', function (err, data) {
+app.get('/waterTemperature', function (request, response) {
+  sensorSvc.getSensorData('a', startDate, endDate, function (err, data) {
       if (err) {
         response.send(err);
       } else {
@@ -29,10 +29,8 @@ app.get('/temperature_data', function (request, response) {
   });
 });
 
-app.get('/waterlevel_data', function (request, response) {
-  sensorSvc.getSensorData('d',
-                          '2016-05-01 00:00:00.00000',
-                          '2016-05-01 23:59:59 99999', function (err, data) {
+app.get('/airTemperature', function (request, response) {
+  sensorSvc.getSensorData('b', startDate, endDate, function (err, data) {
       if (err) {
         response.send(err);
       } else {
@@ -41,10 +39,18 @@ app.get('/waterlevel_data', function (request, response) {
   });
 });
 
-app.get('/humidity_data', function (request, response) {
-  sensorSvc.getSensorData('c',
-                          '2016-05-01 00:00:00.00000',
-                          '2016-05-01 23:59:59 99999', function (err, data) {
+app.get('/humidity', function (request, response) {
+  sensorSvc.getSensorData('c', startDate, endDate, function (err, data) {
+      if (err) {
+        response.send(err);
+      } else {
+        response.send(data);
+      }
+  });
+});
+
+app.get('/waterlevel', function (request, response) {
+  sensorSvc.getSensorData('d',startDate, endDate, function (err, data) {
       if (err) {
         response.send(err);
       } else {

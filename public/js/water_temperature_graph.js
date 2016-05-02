@@ -1,12 +1,12 @@
 $(function () {
-    $.getJSON('http://dashboard.aeroponics.ca994241.svc.dockerapp.io:5000/humidity', function (data) {
+    $.getJSON('http://dashboard.aeroponics.ca994241.svc.dockerapp.io:5000/waterTemperature', function (data) {
 
-        $('#humidity').highcharts({
+        $('#temp').highcharts({
             chart: {
                 zoomType: 'x'
             },
             title: {
-                text: 'Humidity'
+                text: 'Water temperature'
             },
             subtitle: {
                 text: document.ontouchstart === undefined ?
@@ -17,7 +17,7 @@ $(function () {
             },
             yAxis: {
                 title: {
-                    text: 'Humidity(%)'
+                    text: 'Temperature'
                 }
             },
             legend: {
@@ -52,7 +52,7 @@ $(function () {
 
             series: [{
                 type: 'area',
-                name: 'Humidity (%))',
+                name: 'Temp Celsius',
                 data: data
             }]
         });

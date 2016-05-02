@@ -1,5 +1,5 @@
 $(function () {
-    $.getJSON('http://localhost:5000/waterlevel_data', function (data) {
+    $.getJSON('http://dashboard.aeroponics.ca994241.svc.dockerapp.io:5000/waterlevel', function (data) {
 
         $('#waterlvl').highcharts({
             chart: {
@@ -17,7 +17,7 @@ $(function () {
             },
             yAxis: {
                 title: {
-                    text: 'Water level (mm)'
+                    text: 'Water level'
                 }
             },
             legend: {
@@ -52,7 +52,7 @@ $(function () {
 
             series: [{
                 type: 'area',
-                name: 'Water level (mm))',
+                name: 'Water level',
                 data: data
             }]
         });

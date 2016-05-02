@@ -1,12 +1,12 @@
 $(function () {
-    $.getJSON('http://localhost:5000/temperature_data', function (data) {
+    $.getJSON('http://dashboard.aeroponics.ca994241.svc.dockerapp.io:5000/airTemperature', function (data) {
 
         $('#temp').highcharts({
             chart: {
                 zoomType: 'x'
             },
             title: {
-                text: 'Temperatures'
+                text: 'Air temperature'
             },
             subtitle: {
                 text: document.ontouchstart === undefined ?
