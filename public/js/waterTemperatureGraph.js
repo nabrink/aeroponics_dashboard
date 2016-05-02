@@ -1,7 +1,7 @@
 $(function () {
     $.getJSON('http://dashboard.aeroponics.ca994241.svc.dockerapp.io:5000/waterTemperature', function (data) {
 
-        $('#temp').highcharts({
+        $('#waterTemp').highcharts({
             chart: {
                 zoomType: 'x'
             },
