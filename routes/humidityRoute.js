@@ -1,6 +1,6 @@
 'use strict';
 
-exports.humidityRoute = (app) => {
+module.exports = (app) => {
   app.get('/humidity', (request, response) => {
     sensorSvc.getSensorData('c', startDate, endDate, (err, data) => {
         if (err) {

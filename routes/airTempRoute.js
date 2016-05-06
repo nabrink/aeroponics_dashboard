@@ -1,6 +1,6 @@
 'use strict';
 
-exports.airTempRoute = (app) => {
+module.exports = (app) => {
   app.get('/airTemperature', (request, response) => {
     sensorSvc.getSensorData('b', startDate, endDate, (err, data) => {
         if (err) {

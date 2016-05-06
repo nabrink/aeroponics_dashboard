@@ -19,10 +19,10 @@ app.get('/', (request, response) => {
   response.sendFile(path.join(__dirname, 'views/index.html'));
 });
 
-require('./routes/airTempRoute');
-require('./routes/waterTempRoute');
-require('./routes/humidityRoute');
-require('./routes/waterLevelRoute');
+require('./routes/airTempRoute')(app);
+require('./routes/waterTempRoute')(app);
+require('./routes/humidityRoute')(app);
+require('./routes/waterLevelRoute')(app);
 
 io.on('connection', (socket) => {
   socket.on('disconnect', () => {

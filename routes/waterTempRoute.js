@@ -1,6 +1,6 @@
 'use strict';
 
-exports.waterTempRoute = (app) => {
+module.exports = (app) => {
   app.get('/waterTemperature', (request, response) => {
     sensorSvc.getSensorData('a', startDate, endDate, (err, data) => {
         if (err) {
