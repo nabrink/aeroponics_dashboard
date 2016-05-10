@@ -1,15 +1,16 @@
+#!/usr/bin/env node
 'use strict';
 
-var AWS = require('aws-sdk');
+const AWS = require('aws-sdk');
 
 AWS.config.update({
   region: 'eu-central-1'
 });
 
-var docClient = new AWS.DynamoDB.DocumentClient();
+const docClient = new AWS.DynamoDB.DocumentClient();
 
-exports.getSensorData = function (type, start, end, callback) {
-  var params = {
+exports.getSensorData = (searchParams, callback) => {
+  let params = {
     TableName: process.env.SENSOR_DATA_TABLE,
     ProjectionExpression: '#ts, #t, #v',
     FilterExpression: '#ts between :start and :end and #t = :type',
@@ -19,13 +20,13 @@ exports.getSensorData = function (type, start, end, callback) {
       '#v': 'value'
     },
     ExpressionAttributeValues: {
-      ':start': start,
-      ':end': end,
-      ':type': type
+      ':start': searchParams.start,
+      ':end': searchParams.end,
+      ':type': searchParams.type
     }
   };
 
-  docClient.scan(params, function (err, data) {
+  docClient.scan(params, (err, data) => {
     if (err) {
       console.error('Unable to scan the table. Error JSON:', JSON.stringify(err, null, 2));
       callback(err, null);
@@ -37,10 +38,10 @@ exports.getSensorData = function (type, start, end, callback) {
 
 
 function jsonToCSV(data) {
-  var items = [];
+  let items = [];
 
   data.forEach(function (item) {
-    var arrItem = [];
+    let arrItem = [];
     arrItem.push(item.timestamp);
     arrItem.push(item.value);
     items.push(arrItem);

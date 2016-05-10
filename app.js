@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 'use strict';
 
 const express = require('express');
@@ -6,10 +7,6 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const path = require('path');
 const config = require('./config.js');
-const sensorSvc = require('./services/sensor_service');
-
-let startDate = '2016-01-01 00:00:00.00000';
-let endDate = '2016-12-31 23:59:59 99999';
 
 app.set('port', (process.env.PORT || 5000));
 
